@@ -86,7 +86,12 @@ public class EnemyListController : BotSubClass<SAINEnemyController>, IBotClass
 
     public override void Dispose()
     {
-        GameWorldComponent.Instance.PlayerTracker.OnPlayerRemoved -= RemoveEnemy;
+        // GameWorldComponent can already be destroyed when bots dispose at raid teardown.
+        PlayerSpawnTracker playerTracker = GameWorldComponent.Instance?.PlayerTracker;
+        if (playerTracker != null)
+        {
+            playerTracker.OnPlayerRemoved -= RemoveEnemy;
+        }
         BotMemory memory = BotOwner?.Memory;
         if (memory != null)
         {
