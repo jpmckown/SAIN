@@ -2,7 +2,7 @@
 using SAIN.Preset;
 using SAIN.SAINComponent.Classes.EnemyClasses;
 using UnityEngine;
-using GrenadeThrowChecker = GClass577;
+using GrenadeThrowChecker = AIGrenadeHelper;
 
 namespace SAIN.SAINComponent.Classes.WeaponFunction;
 
@@ -42,8 +42,8 @@ public class GrenadeThrowDecider : BotSubClass<BotGrenadeManager>, IBotDecisionC
 
     private readonly AIGreanageThrowData[] _validThrowsBuffer = new AIGreanageThrowData[6];
 
-    public GrenadeThrowDecider(BotGrenadeManager ThrowWeapItemClass)
-        : base(ThrowWeapItemClass)
+    public GrenadeThrowDecider(BotGrenadeManager ThrowWeap)
+        : base(ThrowWeap)
     {
         CanEverTick = false;
     }

@@ -4,7 +4,7 @@ using EFT.InventoryLogic;
 using SAIN.Components;
 using UnityEngine;
 using static EFT.Player;
-using HandEvent = GEventArgs1;
+using HandEvent = EFT.InventoryLogic.ItemEventArgs;
 
 namespace SAIN.SAINComponent.Classes;
 
@@ -88,17 +88,17 @@ public class BotBusyHandsDetector : BotComponentClassBase
         if (Player.HandsController is ItemHandsController itemController)
         {
             Item item = itemController.Item;
-            if (item is StimulatorItemClass)
+            if (item is Stimulator)
             {
                 reason = "stims";
                 return timeSinceStart > TIME_TO_RESET_HEAL_STIMS;
             }
-            if (item is MedKitItemClass)
+            if (item is MedKit)
             {
                 reason = "firstAid";
                 return timeSinceStart > TIME_TO_RESET_HEAL_FIRSTAID;
             }
-            if (item is MedicalItemClass medsItemClass && medsItemClass.HealthEffectsComponent.AffectsAny(EDamageEffectType.DestroyedPart))
+            if (item is Medical medsItemClass && medsItemClass.HealthEffectsComponent.AffectsAny(EDamageEffectType.DestroyedPart))
             {
                 reason = "surgery";
                 return timeSinceStart > TIME_TO_RESET_HEAL_SURGERY;
@@ -116,7 +116,7 @@ public class BotBusyHandsDetector : BotComponentClassBase
         ResetHandsController(Player);
     }
 
-    private readonly Dictionary<GEventArgs1, float> _ongoingEvents = [];
+    private readonly Dictionary<ItemEventArgs, float> _ongoingEvents = [];
     private readonly List<HandEvent> _eventsToRemove = [];
     private readonly List<HandEvent> _events = [];
 

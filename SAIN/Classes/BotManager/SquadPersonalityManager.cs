@@ -3,6 +3,7 @@ using System.Text;
 using SAIN.Components;
 using SAIN.Models.Enums;
 using SAIN.Models.Preset.Personalities;
+using EFT;
 
 namespace SAIN.BotController.Classes;
 

@@ -8,6 +8,7 @@ using EFT.Interactive;
 using SAIN.Interop;
 using UnityEngine;
 using UnityEngine.AI;
+using Diz.Utils;
 
 namespace SAIN.Components.BotController;
 

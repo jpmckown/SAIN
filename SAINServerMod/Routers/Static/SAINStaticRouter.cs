@@ -13,7 +13,7 @@ public sealed class SAINStaticRouter(JsonUtil jsonUtil, ConfigService configServ
         [
             new RouteAction<EmptyRequestData>(
                 "/sain/namepersonalities",
-                async (url, info, sessionID, output) =>
+                async (url, info, sessionID, output, cancellationToken) =>
                     jsonUtil.Serialize(configService.NicknamesModel)
                     ?? throw new InvalidOperationException("Could not serialize personalities!")
             ),

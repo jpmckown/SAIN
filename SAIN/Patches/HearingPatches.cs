@@ -50,13 +50,13 @@ public class TryPlayShootSoundPatch : ModulePatch
 {
     protected override MethodBase GetTargetMethod()
     {
-        return AccessTools.Method(typeof(PlayerAIDataClass), nameof(PlayerAIDataClass.TryPlayShootSound));
+        return AccessTools.Method(typeof(AIData), nameof(AIData.TryPlayShootSound));
     }
 
     [PatchPrefix]
-    public static bool PatchPrefix(PlayerAIDataClass __instance)
+    public static bool PatchPrefix(AIData __instance)
     {
-        __instance.Boolean_0 = true;
+        __instance.UseFlare = true;
         return false;
     }
 }
@@ -128,7 +128,7 @@ public class TogglableSetPatch : ModulePatch
 
         if (!simulate && !silent && __instance.On != value && __instance.Item.Owner is Player.PlayerInventoryController invCont)
         {
-            Player player = invCont.Player_0;
+            Player player = invCont.Player;
 
             const float baseRange = 10f;
             BotManagerComponent.Instance?.BotHearing.PlayAISound(

@@ -16,11 +16,11 @@ public class TreeSoundPatch : ModulePatch
 {
     protected override MethodBase GetTargetMethod()
     {
-        return AccessTools.Method(typeof(TreeInteractive), nameof(TreeInteractive.method_0));
+        return AccessTools.Method(typeof(TreeInteractive), nameof(TreeInteractive.PlaySoundBank));
     }
 
     [PatchPostfix]
-    public static void Patch(Vector3 soundPosition, BetterSource source, IPlayerOwner player, SoundBank ____soundBank)
+    public static void Patch(Vector3 soundPosition, BetterSource source, IObserverToPlayerBridge player, SoundBank ____soundBank)
     {
         if (player.iPlayer != null)
         {
@@ -158,7 +158,7 @@ public class AimSoundPatch : ModulePatch
 {
     protected override MethodBase GetTargetMethod()
     {
-        return AccessTools.Method(typeof(Player.FirearmController), nameof(Player.FirearmController.method_60));
+        return AccessTools.Method(typeof(Player.FirearmController), nameof(Player.FirearmController.PlayAimingSound));
     }
 
     [PatchPrefix]
