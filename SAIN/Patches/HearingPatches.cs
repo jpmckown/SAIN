@@ -21,10 +21,10 @@ public class GrenadeCollisionPatch : ModulePatch
     }
 
     [PatchPostfix]
-    public static void Patch(Grenade __instance, SoundBank ___soundBank_0)
+    public static void Patch(Grenade __instance, SoundBank ____collisionSoundBank)
     {
-        ___soundBank_0.Rolloff = _defaultRolloff * ROLLOFF_MULTI;
-        //Logger.LogDebug($"Rolloff {_defaultRolloff} after {___soundBank_0.Rolloff}");
+        ____collisionSoundBank.Rolloff = _defaultRolloff * ROLLOFF_MULTI;
+        //Logger.LogDebug($"Rolloff {_defaultRolloff} after {____collisionSoundBank.Rolloff}");
         BotManagerComponent.Instance?.GrenadeController.GrenadeCollided(__instance, 35);
     }
 
