@@ -1,0 +1,21 @@
+{
+  "Enabled": true,
+  "GuaranteedBossMedals": 1,
+  "GuaranteeCultistPriests": false,
+  "MaxMedalsPerBot": 3,
+  "BonusRolls": 1,
+  "TierChance": {
+    "Boss": 12.0,
+    "CultistPriest": 10.0,
+    "Follower": 6.0,
+    "Raider": 3.0,
+    "Pmc": 1.5,
+    "Scav": 0.0
+  },
+  "DifficultyMultiplier": {
+    "easy": 0.5,
+    "normal": 1.0,
+    "hard": 1.75,
+    "impossible": 3.0
+  }
+}

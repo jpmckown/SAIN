@@ -66,6 +66,9 @@ public class GlobalSettingsClass : SettingsGroupBase<GlobalSettingsClass>
     [Name("Power Level Calculation")]
     public PowerCalcSettings PowerCalc = new();
 
+    [Name("Lega Medals")]
+    public LegaMedalSettings LegaMedals = new();
+
     public override void InitList()
     {
         SettingsList.Clear();
@@ -83,5 +86,6 @@ public class GlobalSettingsClass : SettingsGroupBase<GlobalSettingsClass>
         SquadTalk.Init(SettingsList);
         PowerCalc.Init(SettingsList);
         Steering.Init(SettingsList);
+        LegaMedals.Init(SettingsList);
     }
 }

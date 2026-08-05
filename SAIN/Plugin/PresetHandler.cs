@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SAIN.Editor;
+using SAIN.Models.Preset;
 using SAIN.Preset;
 using static SAIN.Helpers.JsonUtility;
 
@@ -154,6 +155,10 @@ internal class PresetHandler
         LoadedPreset?.GlobalSettings.Update();
         LoadedPreset?.PersonalityManager.Update();
         LoadedPreset?.BotSettings.Update();
+
+        // Lega Medals are applied server-side during bot loot generation, so the settings have to
+        // be shipped across rather than read locally. Only affects bots spawned from here on.
+        LegaMedalSync.Send(LoadedPreset?.GlobalSettings);
     }
 
     private static bool CheckIfPresetLoaded(string presetName, out SAINPresetDefinition definition)
