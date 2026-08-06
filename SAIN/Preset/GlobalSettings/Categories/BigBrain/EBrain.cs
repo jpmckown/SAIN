@@ -83,6 +83,15 @@ public static class AIBrains
                     }
                 }
 
+                foreach (var brain in PlayerScavBossBrains)
+                {
+                    string brainName = brain.ToString();
+                    if (!combinedBrains.Contains(brainName))
+                    {
+                        combinedBrains.Add(brainName);
+                    }
+                }
+
                 _allowedPlayerScavBrains = combinedBrains.AsReadOnly();
             }
 
@@ -128,6 +137,10 @@ public static class AIBrains
     public static readonly List<EBrain> PMCs = [EBrain.PmcBear, EBrain.PmcUsec];
 
     public static readonly List<EBrain> Scavs = [EBrain.CursAssault, EBrain.Assault];
+
+    // SPT rolls a random brain for player Scavs from bot.json's playerScavBrainType, which includes bossKilla.
+    // SAIN already runs its layers on these brains, so player Scavs that roll one are still valid.
+    public static readonly List<EBrain> PlayerScavBossBrains = [EBrain.Killa, EBrain.KillaAgro];
 
     public static readonly List<EBrain> Goons = [EBrain.Knight, EBrain.BirdEye, EBrain.BigPipe];
 
